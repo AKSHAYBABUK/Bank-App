@@ -3,20 +3,21 @@
 </div>
 
 
-   <form>
+   <form (ngSubmit)="login()">
     <div id="form1" class="container w-25 border mt-5 p-3" style=" background-color: rgba(99, 98, 98, 0.5);">
             <h1 class="text-center text-white">Login Page</h1>
         <div class="mt-2 p-3" >
-            <input type="text" class="form-control" #accno [placeholder]="data" name="acno" id="acid">
+            <input type="text" class="form-control" [(ngModel)]="acno"  [placeholder]="data" name="acno" id="acid">
         </div>
         <div class=" p-3">
-            <input type="password" class="form-control" #pswd placeholder="Password" name="pass" id="pid">
+            <input type="password" class="form-control"  [(ngModel)]="psw"  placeholder="Password" name="pass" id="pid">
         </div>
         <div class="text-center p-3">
-            <button type="submit" (click)="login(accno,pswd)" class="btn btn-success">Login</button>
+            <button type="submit"  class="btn btn-success">Login</button>
             <br><br>
-            <p>New User ? <a href="">Register Here</a></p>
+            <p>New User ? <a routerLink="register">Register Here</a></p>
         </div>
     </div>
 </form>
 
+    

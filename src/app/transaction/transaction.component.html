@@ -1,0 +1,27 @@
+
+<div class="row"  >
+   <div class="col-4"></div>
+   <div class="col-4 p-4" style="margin-top: 50px; background-color: rgba(99, 98, 98, 0.5);color: whitesmoke; text-align: center;border: 2px white solid; border-radius: 30px; font-weight: bold;">
+    <h1 >Transaction History</h1>
+    <div class=" mt-4 p-3">
+    <table style="border: 2px white solid; background-color: rgb(190, 223, 190,0.5) ;" class=" w-75 container" >
+        <thead style="border: 2px white solid;">
+            <tr>
+                <th style="border: 2px white solid;">TYPE</th> 
+                <th style="border: 2px white solid;">AMOUNT</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of transaction">
+                <td style="border: 2px white solid;">{{i.type}}</td>
+                <td style="border: 2px white solid;">{{i.amount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+   <div class="col-4"></div>
+</div>

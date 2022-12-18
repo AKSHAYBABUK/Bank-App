@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -11,8 +12,8 @@ export class LoginComponent {
 
   aim="Your Perfect Banking Partner"
   data="enter accno"
-  acno=''
-  psw=''
+  // acno=''
+  // psw=''
 
   // userDetails:any={
   //  1000:{accno:1000,username:"anu",password:"123",balance:0},
@@ -22,14 +23,13 @@ export class LoginComponent {
 
   // }
 
-  constructor(private router:Router,private ds:DataService){}
+  constructor(private router:Router,private ds:DataService,private fb:FormBuilder){}
 
-
-
+loginForm=this.fb.group({acno:['',[Validators.required,Validators.pattern('[0-9]+')]],psw:['',[Validators.required,Validators.pattern('[0-9]+')]]})
 
   login(){
-      var acno=this.acno
-      var psw=this.psw
+      var acno=this.loginForm.value.acno
+      var psw=this.loginForm.value.psw
      const result=this.ds.login(acno,psw)
 
      if(result){

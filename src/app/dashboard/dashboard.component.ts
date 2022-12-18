@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -24,18 +25,20 @@ export class DashboardComponent {
 
 
   // here we call the dataservice class here a class in other class so we use constructor
-  constructor(private ds: DataService) {
+  constructor(private ds: DataService,private fb:FormBuilder) {
 
     // acess user name from dataservices.ts
     this.user=this.ds.currentUser
   }
 
+  depositeForm=this.fb.group({acno:[''],psw:[''],amnt:['']})
+  withdrawForm=this.fb.group({acno1:[''],psw1:[''],amnt1:['']})
 
   deposit() {
 
-    var acno = this.acno
-    var psw = this.psw
-    var amnt = this.amnt
+    var acno = this.depositeForm.value.acno
+    var psw = this.depositeForm.value.psw
+    var amnt = this.depositeForm.value.amnt
     const result = this.ds.deposit(acno, psw, amnt)
     // here value of acno and psw and amnt are the value user add in input so we take here that value
     if (result) {
@@ -50,9 +53,9 @@ export class DashboardComponent {
   }
 
   withdraw() {
-    var acno1 = this.acno1
-    var psw1 = this.psw1
-    var amnt1 = this.amnt1
+    var acno1 = this.withdrawForm.value.acno1
+    var psw1 = this.withdrawForm.value.psw1
+    var amnt1 = this.withdrawForm.value.amnt1
     const result = this.ds.withdraw(acno1, psw1, amnt1)
     if (result) {
       alert(`${amnt1} is debited from your account and the balance is ${result}`)

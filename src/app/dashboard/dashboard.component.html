@@ -2,41 +2,44 @@
 
 <h1 style="text-align:center ; color: bisque;" >Welcome {{user}} </h1>
 
+<form (ngSubmit)="deposit()" [formGroup]="depositeForm">
 
-<div class="row" style="margin-top: 150px;" >
-    <div class="col-lg-5" style="background-color: rgba(82, 124, 148, 0.5) ; border-radius: 50px;margin-left:75px;">
+    <div class="container w-50 border mt-5 p-3" style="background-color: rgba(82, 124, 148, 0.5) ; border-radius: 50px;margin-left:75px;">
         <h1 class="text-center text-white">Deposite</h1>
         <div class="mt-2 p-3" >
-            <input type="text" class="form-control" [(ngModel)]="acno" placeholder="Account Number"    name="acno" id="acid">
+            <input type="text" class="form-control" formControlName="acno" placeholder="Account Number"    name="acno" id="acid">
         </div>
         <div class=" p-3">
-            <input type="password" class="form-control" [(ngModel)]="psw"  placeholder="Password" name="amount" id="pid">
+            <input type="password" class="form-control" formControlName="psw"  placeholder="Password" name="amount" id="pid">
         </div>
         <div class=" p-3">
-            <input type="text" class="form-control" [(ngModel)]="amnt"  placeholder="Amount" name="psw" id="pid">
+            <input type="text" class="form-control" formControlName="amnt"  placeholder="Amount" name="psw" id="pid">
         </div>
 
         <div class="text-center p-3">
-            <button type="submit" (click)="deposit()"  class="btn btn-success">Deposite</button>
+            <button type="submit"  class="btn btn-success">Deposite</button>
         </div>
 
     </div>
-    <div class="col-lg-5" style="background-color: rgba(82, 124, 148, 0.5) ; border-radius: 50px;margin-left: 120px;">
+</form>  
+
+<form (ngSubmit)="withdraw()" [formGroup]="withdrawForm">
+    <div class="container w-50 border mt-5 p-3" style="background-color: rgba(82, 124, 148, 0.5) ; border-radius: 50px;margin-left: 75px;">
         <h1 class="text-center text-white">Withdraw</h1>
         <div class="mt-2 p-3" >
-            <input type="text" class="form-control" [(ngModel)]="acno1"  placeholder="Account Number"    name="acno1" id="acid1">
+            <input type="text" class="form-control" formControlName="acno1"  placeholder="Account Number"    name="acno1" id="acid1">
         </div>
         <div class=" p-3">
-            <input type="password" class="form-control" [(ngModel)]="psw1"   placeholder="Password" name="psw1" id="pid1">
+            <input type="password" class="form-control" formControlName="psw1"   placeholder="Password" name="psw1" id="pid1">
         </div>
         <div class=" p-3">
-            <input type="text" class="form-control"  [(ngModel)]="amnt1"   placeholder="Amount" name="amount1" id="pid1">
+            <input type="text" class="form-control"  formControlName="amnt1"   placeholder="Amount" name="amount1" id="pid1">
         </div>
         <div class="text-center p-3">
-            <button type="submit" (click)="withdraw()"  class="btn btn-danger">Withdraw</button>
+            <button type="submit"  class="btn btn-danger">Withdraw</button>
         </div>
     </div>
-</div>
+</form>
 
 <div style="margin-top: 70px; text-align: center;" >
 

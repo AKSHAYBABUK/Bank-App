@@ -11,28 +11,40 @@ import { DataService } from '../services/data.service';
 export class DashboardComponent {
 
 
-  acno = ''
-  psw = ''
-  amnt = ''
+  // acno = ''
+  // psw = ''
+  // amnt = ''
 
-  acno1 = ''
-  psw1 = ''
-  amnt1 = ''
+  // acno1 = ''
+  // psw1 = ''
+  // amnt1 = ''
 
-
-  user=''
-
+dateandtime:any
+  user = ''
+accountno:any
 
 
   // here we call the dataservice class here a class in other class so we use constructor
-  constructor(private ds: DataService,private fb:FormBuilder) {
+  constructor(private ds: DataService, private fb: FormBuilder, private router: Router) {
 
     // acess user name from dataservices.ts
-    this.user=this.ds.currentUser
+    this.user = this.ds.currentUser
+
+    this.dateandtime=new Date()
+
+    // creating a object with classs Date and add it into dateandtime 
   }
 
-  depositeForm=this.fb.group({acno:[''],psw:[''],amnt:['']})
-  withdrawForm=this.fb.group({acno1:[''],psw1:[''],amnt1:['']})
+  ngOnInit(): void {
+    if (!localStorage.getItem('currentAcno')) {
+        alert('please login')
+        this.router.navigateByUrl('')
+
+    }
+  }
+
+  depositeForm = this.fb.group({ acno: [''], psw: [''], amnt: [''] })
+  withdrawForm = this.fb.group({ acno1: [''], psw1: [''], amnt1: [''] })
 
   deposit() {
 
@@ -63,5 +75,28 @@ export class DashboardComponent {
 
   }
 
+
+  logout() {
+    localStorage.removeItem('currentUser')
+    localStorage.removeItem('currentAcno')
+    this.router.navigateByUrl('')
+  }
+
+
+  deleteconfirm(){
+    // here we want to get the account number to the delete confirm component when button is pressed when it reached thr it will 
+    // execute the style and removes deposite and withdraw
+    this.accountno=JSON.parse(localStorage.getItem("currentAcno")|| '')
+
+  }
+
+  oncancel(){
+    // here we want to remove account number from the deleteconfrim component so that deposite and withdraw will be visible 
+    this.accountno=''
+  }
+
 }
+
+
+
 

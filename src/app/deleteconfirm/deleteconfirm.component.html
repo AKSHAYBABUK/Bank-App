@@ -1,0 +1,7 @@
+<div *ngIf="item"  class=" container w-50 mt-3 border text-center p-3"  style="background-color: rgba(82, 124, 148, 0.5) ; border-radius: 50px;">
+<h4 class="text-white">Do you want to Delete this Account{{item}}</h4>
+<!-- just to show the value of cuuentAcno reached here -->
+<button class="btn btn-success text-start mt-5">yes</button>
+ <button (click)="cancel()" class="btn btn-danger ms-5 mt-5">no</button>
+
+</div>

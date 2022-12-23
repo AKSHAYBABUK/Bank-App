@@ -1,48 +1,75 @@
+<div class="text-end p-3">
+    <button type="submit" (click)="logout()" class="btn btn-danger">Logout</button>
+</div>
+
+<div>
+    <h1 style="text-align:center ; color: bisque;">Welcome {{user}} </h1>
+    <h5 style="text-align:center ; color: rgb(13, 13, 12);"> {{dateandtime | date :'medium'}}</h5>
 
 
-<h1 style="text-align:center ; color: bisque;" >Welcome {{user}} </h1>
+</div  >
+<div style="margin-top: 70px; text-align: center;">
+
+    <a style="background-color: rgba(82, 124, 148, 0.5);border: 5px rgba(82, 124, 148) solid; color: white;text-decoration: none;font-weight: bolder; font-size: larger; border-radius: 20px;"
+        class="p-4" routerLink="/transaction">View Transaction history</a>
+
+</div>
+
+<div class="text-end p-3">
+    <button type="submit" (click)="deleteconfirm()"  class="btn btn-outline-danger">Delete</button>
+</div>
+
+<app-deleteconfirm (onCancel)="oncancel()" [item]="accountno"></app-deleteconfirm>
+
+
+<div class="container w-50 mt-5 p-3" [ngClass]="accountno?'style':''">
 
 <form (ngSubmit)="deposit()" [formGroup]="depositeForm">
 
-    <div class="container w-50 border mt-5 p-3" style="background-color: rgba(82, 124, 148, 0.5) ; border-radius: 50px;margin-left:75px;">
+       <div style="background-color: rgba(82, 124, 148, 0.5) ; border-radius: 50px;">
         <h1 class="text-center text-white">Deposite</h1>
-        <div class="mt-2 p-3" >
-            <input type="text" class="form-control" formControlName="acno" placeholder="Account Number"    name="acno" id="acid">
+        <div class="mt-2 p-3">
+            <input type="text" class="form-control" formControlName="acno" placeholder="Account Number" name="acno"
+                id="acid">
         </div>
         <div class=" p-3">
-            <input type="password" class="form-control" formControlName="psw"  placeholder="Password" name="amount" id="pid">
+            <input type="password" class="form-control" formControlName="psw" placeholder="Password" name="pass"
+                id="pid">
         </div>
         <div class=" p-3">
-            <input type="text" class="form-control" formControlName="amnt"  placeholder="Amount" name="psw" id="pid">
+            <input type="text" class="form-control" formControlName="amnt" placeholder="Amount" name="amnt" id="amid">
         </div>
 
         <div class="text-center p-3">
-            <button type="submit"  class="btn btn-success">Deposite</button>
+            <button type="submit" class="btn btn-success">Deposite</button>
         </div>
 
-    </div>
-</form>  
-
-<form (ngSubmit)="withdraw()" [formGroup]="withdrawForm">
-    <div class="container w-50 border mt-5 p-3" style="background-color: rgba(82, 124, 148, 0.5) ; border-radius: 50px;margin-left: 75px;">
-        <h1 class="text-center text-white">Withdraw</h1>
-        <div class="mt-2 p-3" >
-            <input type="text" class="form-control" formControlName="acno1"  placeholder="Account Number"    name="acno1" id="acid1">
-        </div>
-        <div class=" p-3">
-            <input type="password" class="form-control" formControlName="psw1"   placeholder="Password" name="psw1" id="pid1">
-        </div>
-        <div class=" p-3">
-            <input type="text" class="form-control"  formControlName="amnt1"   placeholder="Amount" name="amount1" id="pid1">
-        </div>
-        <div class="text-center p-3">
-            <button type="submit"  class="btn btn-danger">Withdraw</button>
-        </div>
     </div>
 </form>
 
-<div style="margin-top: 70px; text-align: center;" >
-
-    <a style="background-color: rgba(82, 124, 148, 0.5);border: 5px rgba(82, 124, 148) solid; color: white;text-decoration: none;font-weight: bolder; font-size: larger; border-radius: 20px;" class="p-4" routerLink="/transaction">View Transaction history</a>
-
 </div>
+
+<div class="container w-50 mt-5 p-3" [ngClass]="accountno?'style':''">
+
+<form (ngSubmit)="withdraw()" [formGroup]="withdrawForm">
+    <div style="background-color: rgba(64, 118, 149, 0.75) ; border-radius: 50px;">
+        <h1 class="text-center text-white">Withdraw</h1>
+        <div class="mt-2 p-3">
+            <input type="text" class="form-control" formControlName="acno1" placeholder="Account Number" name="acno1"
+                id="acid1">
+        </div>
+        <div class=" p-3">
+            <input type="password" class="form-control" formControlName="psw1" placeholder="Password" name="psw1"
+                id="pid1">
+        </div>
+        <div class=" p-3">
+            <input type="text" class="form-control" formControlName="amnt1" placeholder="Amount" name="amount1"
+                id="amid1">
+        </div>
+        <div class="text-center p-3">
+            <button type="submit" class="btn btn-danger">Withdraw</button>
+        </div>
+    </div>
+</form>
+</div>
+

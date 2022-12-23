@@ -43,8 +43,6 @@ loginForm=this.fb.group({acno:['',[Validators.required,Validators.pattern('[0-9]
 
   }
 
-
-
 }
     
 
